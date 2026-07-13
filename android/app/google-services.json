@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452010596474",
+    "project_id": "timebox-bc28a",
+    "storage_bucket": "timebox-bc28a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452010596474:android:0fd7345b45f363c1d643c3",
+        "android_client_info": {
+          "package_name": "com.example.timeboxing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452010596474-hm6ua1f3gni4uf8j6oihljvlc6sttda6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4WV4P1p24JubN54F8BVGB0FxZRPLbmM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452010596474-hm6ua1f3gni4uf8j6oihljvlc6sttda6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
