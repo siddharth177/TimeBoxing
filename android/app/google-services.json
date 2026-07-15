@@ -29,6 +29,13 @@
             {
               "client_id": "452010596474-hm6ua1f3gni4uf8j6oihljvlc6sttda6.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "452010596474-lhf8t271an465pm9a3sqk5is30ucuu8m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.timeboxing"
+              }
             }
           ]
         }

@@ -57,7 +57,6 @@ class DefaultFirebaseOptions {
     projectId: 'timebox-bc28a',
     storageBucket: 'timebox-bc28a.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCZbetxj4QCwhb89NgcxPDtyPHI35036Xc',
     appId: '1:452010596474:ios:1f5c5193512b00ffd643c3',
@@ -67,7 +66,6 @@ class DefaultFirebaseOptions {
     iosClientId: '452010596474-lhf8t271an465pm9a3sqk5is30ucuu8m.apps.googleusercontent.com',
     iosBundleId: 'com.example.timeboxing',
   );
-
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCZbetxj4QCwhb89NgcxPDtyPHI35036Xc',
     appId: '1:452010596474:ios:1f5c5193512b00ffd643c3',
