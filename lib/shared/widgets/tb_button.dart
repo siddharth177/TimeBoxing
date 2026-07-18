@@ -32,15 +32,18 @@ class TbButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         icon: isLoading
             ? SizedBox(
-          width: 18,
-          height: 18,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            color: scheme.onPrimary,
-          ),
-        )
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: scheme.onPrimary,
+                ),
+              )
             : icon ?? const SizedBox.shrink(),
-        label: Text(label, style: AppTextStyles.labelLg(color: scheme.onPrimary)),
+        label: Text(
+          label,
+          style: AppTextStyles.labelLg(color: scheme.onPrimary),
+        ),
         style: FilledButton.styleFrom(
           backgroundColor: bg,
           foregroundColor: scheme.onPrimary,
