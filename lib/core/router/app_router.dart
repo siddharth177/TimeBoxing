@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timebox/core/navigation/app_shell.dart';
-import 'package:timebox/features/auth/screens/auth_screen.dart';
-import 'package:timebox/features/auth/screens/email_verification_screen.dart';
-import 'package:timebox/features/onboarding/screens/onboarding_screen.dart';
-import 'package:timebox/main.dart' show firebaseReady, onboardingSeen;
+
+import '../../features/auth/screens/auth_screen.dart';
+import '../../features/auth/screens/email_verification_screen.dart';
+import '../../main.dart';
+import '../navigation/app_shell.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
 

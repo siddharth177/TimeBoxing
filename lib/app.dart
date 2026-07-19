@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:timebox/core/router/app_router.dart';
-import 'package:timebox/core/theme/app_theme.dart';
-import 'package:timebox/features/settings/providers/settings_provider.dart';
+
+import 'core/router/app_router.dart';
+import 'core/theme/app_theme.dart';
 
 class TimeBoxApp extends ConsumerWidget {
   const TimeBoxApp({super.key});

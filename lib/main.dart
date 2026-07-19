@@ -1,12 +1,12 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:timeboxing/services/notification_service.dart';
+import 'app.dart';
 import 'firebase_options.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timebox/app.dart';
-import 'package:timebox/services/notification_service.dart';
 
 bool firebaseReady = false;
 bool onboardingSeen = false;
