@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:timebox/services/notification_service.dart';
-import 'package:timebox/features/review/providers/review_provider.dart';
-import 'package:timebox/features/focus/screens/focus_screen.dart';
-import 'package:timebox/features/goals/screens/goals_screen.dart';
-import 'package:timebox/features/review/screens/review_screen.dart';
-import 'package:timebox/features/settings/screens/settings_screen.dart';
-import 'package:timebox/features/timeboxing/screens/timeboxing_screen.dart';
+
+import '../../services/notification_service.dart';
 
 /// Global provider for the selected shell tab index.
 /// Any screen can read/write this to programmatically switch tabs.
