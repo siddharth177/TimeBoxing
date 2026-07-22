@@ -5,7 +5,7 @@ import '../../services/notification_service.dart';
 
 /// Global provider for the selected shell tab index.
 /// Any screen can read/write this to programmatically switch tabs.
-final shellTabProvider = StateProvider<int>((ref) => 2);
+final shellTabProvider = NotifierProvider()<int>((ref) => 2);
 
 const _destinations = <(IconData, IconData, String)>[
   (Icons.flag_outlined, Icons.flag_rounded, 'Goals'),

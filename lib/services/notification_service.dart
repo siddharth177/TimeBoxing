@@ -23,8 +23,8 @@ class NotificationService {
   static Future<void> init() async {
     if (kIsWeb) return;
     tz_data.initializeTimeZones();
-    final tzName = await FlutterTimezone.getLocalTimezone();
-    tz.setLocalLocation(tz.getLocation(tzName));
+    final tzInfo = await FlutterTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(tzInfo.identifier));
 
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const ios = DarwinInitializationSettings(
@@ -34,7 +34,7 @@ class NotificationService {
     );
 
     await _plugin.initialize(
-      const InitializationSettings(android: android, iOS: ios),
+      settings: const InitializationSettings(android: android, iOS: ios),
     );
   }
 
@@ -72,11 +72,11 @@ class NotificationService {
         : '"$title" starts in ${minutesBefore}m';
 
     await _plugin.zonedSchedule(
-      id,
-      '⏱ TimeBox',
-      body,
-      tz.TZDateTime.from(notifyAt, tz.local),
-      const NotificationDetails(
+      id: id,
+      title: '⏱ TimeBox',
+      body: body,
+      scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
+      notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
           _channelId,
           _channelName,
@@ -87,8 +87,6 @@ class NotificationService {
         iOS: DarwinNotificationDetails(),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
     );
   }
 
@@ -99,10 +97,10 @@ class NotificationService {
   }) async {
     if (kIsWeb) return;
     await _plugin.show(
-      id,
-      title,
-      body,
-      const NotificationDetails(
+      id: id,
+      title: title,
+      body: body,
+      notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
           _channelId,
           _channelName,
@@ -117,7 +115,7 @@ class NotificationService {
 
   static Future<void> cancelBlock(String blockId) async {
     if (kIsWeb) return;
-    await _plugin.cancel(blockId.hashCode.abs() % 100000);
+    await _plugin.cancel(id: blockId.hashCode.abs() % 100000);
   }
 
   static Future<void> cancelAll() async {
@@ -131,34 +129,30 @@ class NotificationService {
         ? "Don't break your $streak-day streak! Log today's review."
         : "Log today's review to start a streak!";
     await _plugin.zonedSchedule(
-      NotificationIds.streakWarning,
-      '🔥 TimeBox Review',
-      body,
-      _nextInstanceOfTime(21, 0),
-      _notifDetails(),
+      id: NotificationIds.streakWarning,
+      title: '🔥 TimeBox Review',
+      body: body,
+      scheduledDate: _nextInstanceOfTime(21, 0),
+      notificationDetails: _notifDetails(),
       androidScheduleMode: AndroidScheduleMode.inexact,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }
 
   static Future<void> cancelStreakWarning() async {
     if (kIsWeb) return;
-    await _plugin.cancel(NotificationIds.streakWarning);
+    await _plugin.cancel(id: NotificationIds.streakWarning);
   }
 
   static Future<void> scheduleWeeklyDigest() async {
     if (kIsWeb) return;
     await _plugin.zonedSchedule(
-      NotificationIds.weeklyDigest,
-      '📊 Your week in TimeBox',
-      'How did your week go? Tap to see your completion rate and streak.',
-      _nextInstanceOfWeekday(DateTime.sunday, 20, 0),
-      _notifDetails(),
+      id: NotificationIds.weeklyDigest,
+      title: '📊 Your week in TimeBox',
+      body: 'How did your week go? Tap to see your completion rate and streak.',
+      scheduledDate: _nextInstanceOfWeekday(DateTime.sunday, 20, 0),
+      notificationDetails: _notifDetails(),
       androidScheduleMode: AndroidScheduleMode.inexact,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
     );
   }
