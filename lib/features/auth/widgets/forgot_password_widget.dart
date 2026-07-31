@@ -37,7 +37,7 @@ class _ForgotPasswordWidgetState extends ConsumerState<ForgotPasswordWidget> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Reset email sent — check your inbox.')),
         );
-        ref.read(isForgotPasswordModeProvider.notifier).state = false;
+        ref.read(isForgotPasswordModeProvider.notifier).set(false);
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
@@ -92,7 +92,7 @@ class _ForgotPasswordWidgetState extends ConsumerState<ForgotPasswordWidget> {
             variant: TbButtonVariant.ghost,
             color: AppColors.brown60,
             onPressed: () =>
-                ref.read(isForgotPasswordModeProvider.notifier).state = false,
+                ref.read(isForgotPasswordModeProvider.notifier).set(false),
           ),
         ],
       ),
