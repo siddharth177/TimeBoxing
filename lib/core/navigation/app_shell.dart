@@ -5,7 +5,13 @@ import '../../services/notification_service.dart';
 
 /// Global provider for the selected shell tab index.
 /// Any screen can read/write this to programmatically switch tabs.
-final shellTabProvider = NotifierProvider()<int>((ref) => 2);
+final shellTabProvider = NotifierProvider<_ShellTabNotifier, int>(_ShellTabNotifier.new);
+
+class _ShellTabNotifier extends Notifier<int> {
+  @override
+  int build() => 2;
+  void set(int tab) => state = tab;
+}
 
 const _destinations = <(IconData, IconData, String)>[
   (Icons.flag_outlined, Icons.flag_rounded, 'Goals'),
@@ -53,7 +59,7 @@ class _AppShellState extends ConsumerState<AppShell> {
     final tab = ref.watch(shellTabProvider);
     final isWide = MediaQuery.of(context).size.width >= 600;
 
-    ref.listen<int>(currentStreakProvider, (prev, next) {
+    ref.listen<int>(shellTabProvider, (prev, next) {
       if (prev != next) NotificationService.scheduleStreakWarning(streak: next);
     });
 
