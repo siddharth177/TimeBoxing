@@ -23,10 +23,10 @@ void main() async {
     );
     if (!kDebugMode) {
       await FirebaseAppCheck.instance.activate(
-        androidProvider: AndroidProvider.playIntegrity,
-        appleProvider: AppleProvider.appAttestWithDeviceCheckFallback,
+        providerAndroid: const AndroidPlayIntegrityProvider(),
+        providerApple: const AppleAppAttestWithDeviceCheckFallbackProvider(),
         // TODO: replace 'recaptcha_secret_key' with your reCAPTCHA v3 site key from Google Cloud Console
-        webProvider: ReCaptchaV3Provider('recaptcha_secret_key'),
+        providerWeb: ReCaptchaV3Provider('recaptcha_secret_key'),
       );
     }
     firebaseReady = true;
