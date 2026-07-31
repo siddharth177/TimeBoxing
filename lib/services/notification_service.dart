@@ -178,8 +178,9 @@ class NotificationService {
       hour,
       minute,
     );
-    if (scheduled.isBefore(now))
+    if (scheduled.isBefore(now)) {
       scheduled = scheduled.add(const Duration(days: 1));
+    }
     return scheduled;
   }
 
