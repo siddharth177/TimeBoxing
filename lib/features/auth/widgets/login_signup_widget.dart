@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -186,8 +187,9 @@ class _LoginSignupWidgetState extends ConsumerState<LoginSignupWidget> {
             ),
             validator: (v) {
               if (v == null || v.isEmpty) return 'Enter a password.';
-              if (v.length < 8)
+              if (v.length < 8) {
                 return 'Password must be at least 8 characters.';
+              }
               if (v.length > 128) return 'Password too long.';
               return null;
             },
@@ -212,8 +214,9 @@ class _LoginSignupWidgetState extends ConsumerState<LoginSignupWidget> {
                 ),
               ),
               validator: (v) {
-                if (v != _passwordController.text)
+                if (v != _passwordController.text) {
                   return 'Passwords do not match.';
+                }
                 return null;
               },
             ),
@@ -234,9 +237,9 @@ class _LoginSignupWidgetState extends ConsumerState<LoginSignupWidget> {
               color: AppColors.orange40,
               onPressed: anyLoading
                   ? null
-                  : () =>
-                        ref.read(isForgotPasswordModeProvider.notifier).state =
-                            true,
+                  : () => ref
+                        .read(isForgotPasswordModeProvider.notifier)
+                        .set(true),
             ),
             const SizedBox(height: 8),
           ],
@@ -249,7 +252,7 @@ class _LoginSignupWidgetState extends ConsumerState<LoginSignupWidget> {
             color: AppColors.brown60,
             onPressed: anyLoading
                 ? null
-                : () => ref.read(isLoginModeProvider.notifier).state = !isLogin,
+                : () => ref.read(isLoginModeProvider.notifier).set(!isLogin),
           ),
 
           const SizedBox(height: 24),
@@ -347,127 +350,17 @@ class _GoogleIcon extends StatelessWidget {
   const _GoogleIcon();
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 18,
-      height: 18,
-      decoration: const BoxDecoration(
-        color: Color(0xFF4285F4),
-        shape: BoxShape.circle,
-      ),
-      alignment: Alignment.center,
-      child: const Text(
-        'G',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 11,
-          fontWeight: FontWeight.w800,
-          height: 1.0,
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) =>
+      const FaIcon(FontAwesomeIcons.google, size: 18, color: Color(0xFF4285F4));
 }
 
 class _AppleIcon extends StatelessWidget {
   const _AppleIcon();
 
   @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.onSurface;
-    return SizedBox(
-      width: 18,
-      height: 18,
-      child: CustomPaint(painter: _AppleLogoPainter(color: color)),
-    );
-  }
-}
-
-class _AppleLogoPainter extends CustomPainter {
-  const _AppleLogoPainter({required this.color});
-
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size s) {
-    final fill = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-
-    final body = Path()
-      ..moveTo(s.width * 0.50, s.height * 0.26)
-      ..quadraticBezierTo(
-        s.width * 0.82,
-        s.height * 0.24,
-        s.width * 0.90,
-        s.height * 0.50,
-      )
-      ..quadraticBezierTo(
-        s.width * 0.97,
-        s.height * 0.74,
-        s.width * 0.80,
-        s.height * 0.90,
-      )
-      ..quadraticBezierTo(
-        s.width * 0.65,
-        s.height * 1.00,
-        s.width * 0.50,
-        s.height * 0.92,
-      )
-      ..quadraticBezierTo(
-        s.width * 0.35,
-        s.height * 1.00,
-        s.width * 0.20,
-        s.height * 0.90,
-      )
-      ..quadraticBezierTo(
-        s.width * 0.03,
-        s.height * 0.74,
-        s.width * 0.10,
-        s.height * 0.50,
-      )
-      ..quadraticBezierTo(
-        s.width * 0.18,
-        s.height * 0.24,
-        s.width * 0.50,
-        s.height * 0.26,
-      )
-      ..close();
-    canvas.drawPath(body, fill);
-
-    final stemPaint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = s.width * 0.11
-      ..strokeCap = StrokeCap.round;
-    final stem = Path()
-      ..moveTo(s.width * 0.50, s.height * 0.26)
-      ..quadraticBezierTo(
-        s.width * 0.52,
-        s.height * 0.06,
-        s.width * 0.70,
-        s.height * 0.02,
-      );
-    canvas.drawPath(stem, stemPaint);
-
-    final leaf = Path()
-      ..moveTo(s.width * 0.54, s.height * 0.16)
-      ..quadraticBezierTo(
-        s.width * 0.76,
-        s.height * 0.06,
-        s.width * 0.78,
-        s.height * 0.20,
-      )
-      ..quadraticBezierTo(
-        s.width * 0.66,
-        s.height * 0.18,
-        s.width * 0.54,
-        s.height * 0.16,
-      )
-      ..close();
-    canvas.drawPath(leaf, fill);
-  }
-
-  @override
-  bool shouldRepaint(_AppleLogoPainter old) => old.color != color;
+  Widget build(BuildContext context) => FaIcon(
+    FontAwesomeIcons.apple,
+    size: 18,
+    color: Theme.of(context).colorScheme.onSurface,
+  );
 }
