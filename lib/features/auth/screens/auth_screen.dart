@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:timebox/core/theme/app_colors.dart';
-import 'package:timebox/features/auth/providers/auth_provider.dart';
-import 'package:timebox/features/auth/widgets/forgot_password_widget.dart';
-import 'package:timebox/features/auth/widgets/login_signup_widget.dart';
+
+import '../../../core/theme/app_colors.dart';
+import '../providers/auth_providers.dart';
+import '../widgets/forgot_password_widget.dart';
+import '../widgets/login_signup_widget.dart';
 
 class AuthScreen extends ConsumerWidget {
   const AuthScreen({super.key});
