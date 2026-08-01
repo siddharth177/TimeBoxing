@@ -5,6 +5,7 @@ import '../../../core/providers/firebase_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../providers/goal_provider.dart';
+import 'goal_form_widgets.dart';
 
 class TierTabStrip extends StatelessWidget {
   const TierTabStrip({super.key, required this.controller});
