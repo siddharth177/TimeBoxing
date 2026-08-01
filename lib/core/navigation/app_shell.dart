@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../features/focus/screens/focus_screen.dart';
+import '../../features/goals/screens/goals_screen.dart';
 import '../../services/notification_service.dart';
 
 /// Global provider for the selected shell tab index.
@@ -51,7 +53,7 @@ class _AppShellState extends ConsumerState<AppShell> {
 
   void _onNavTap(int index) {
     // Only update the provider; ref.listen handles animation.
-    ref.read(shellTabProvider.notifier).state = index;
+    ref.read(shellTabProvider.notifier).set(index);
   }
 
   @override
@@ -76,7 +78,7 @@ class _AppShellState extends ConsumerState<AppShell> {
     final pageView = PageView(
       controller: _pageController,
       physics: const ClampingScrollPhysics(),
-      onPageChanged: (i) => ref.read(shellTabProvider.notifier).state = i,
+      onPageChanged: (i) => ref.read(shellTabProvider.notifier).set(i),
       children: const [
         GoalsScreen(),
         TimeboxingScreen(),
