@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:timeboxing/core/providers/firebase_providers.dart';
-import 'package:timeboxing/core/theme/app_colors.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../core/providers/firebase_providers.dart';
+import '../../../core/theme/app_colors.dart';
 
 const _uuid = Uuid();
 
@@ -82,9 +83,7 @@ class Goal {
   final GoalCategory category;
   final String? customTag;
   final String? description;
-  // 1-based priority (1 = highest). null means no priority set
   final int? priority;
-  // Links this goal to a parent in the next higher tier
   final String? parentId;
   final GoalItemType itemType;
 
@@ -196,17 +195,15 @@ final tierGoalsProvider = StreamProvider.family<List<Goal>, GoalTier>((
 
 final goalsRepoProvider = Provider<GoalsRepository>((ref) {
   final user = ref.watch(currentUserProvider);
-  if (user == null) return null;
-  return GoalsRepository(user.uid);
+  return GoalsRepository(user!.uid);
 });
 
-final tierGoalsRepoProvider = Provider.family<GoalsRepository?, GoalTier>((
+final tierGoalsRepoProvider = Provider.family<GoalsRepository, GoalTier>((
   ref,
   tier,
 ) {
   final user = ref.watch(currentUserProvider);
-  if (user == null) return null;
-  return GoalsRepository(user.uid, tier: tier);
+  return GoalsRepository(user!.uid, tier: tier);
 });
 
 class GoalsRepository {
@@ -261,6 +258,7 @@ class GoalsRepository {
     required String uid,
   }) async {
     final newCompleted = !goal.isCompleted;
+    final fs = FirebaseFirestore.instance;
 
     await fs
         .collection('users')
@@ -286,6 +284,7 @@ class GoalsRepository {
             .collection(parentTier.collection)
             .doc(goal.parentId!)
             .get();
+
         if (parentDoc.exists &&
             !(parentDoc.data()!['isCompleted'] as bool? ?? false)) {
           final parentGoal = Goal.fromDoc(parentDoc);
@@ -321,6 +320,7 @@ class GoalsRepository {
         await cascadeRemove(goal: childGoal, tier: childTier, uid: uid);
       }
     }
+
     await fs
         .collection('users')
         .doc(uid)
