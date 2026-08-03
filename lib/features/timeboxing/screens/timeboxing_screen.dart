@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../core/layout/tb_breakpoints.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../../goals/providers/goal_provider.dart';
+import '../../goals/providers/goals_provider.dart';
 import '../../settings/providers/settings_provider.dart';
 import '../../timeline/models/time_block.dart';
 import '../../timeline/providers/timeline_provider.dart';

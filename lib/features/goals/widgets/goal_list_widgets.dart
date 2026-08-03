@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers/firebase_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../providers/goal_provider.dart';
+import '../providers/goals_provider.dart';
 import 'goal_form_widgets.dart';
 
 class TierTabStrip extends StatelessWidget {

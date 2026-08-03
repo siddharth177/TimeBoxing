@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../shared/widgets/tb_button.dart';
-import '../providers/goal_provider.dart';
+import '../providers/goals_provider.dart';
 import '../services/ai_goal_service.dart';
 
 class AiGoalPlanSheet extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../providers/goal_provider.dart';
+import '../providers/goals_provider.dart';
 
 class AiShortGoal {
   AiShortGoal({

@@ -4,7 +4,7 @@ import 'package:timeboxing/features/timeboxing/widgets/schedule_section.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../shared/widgets/tb_button.dart';
-import '../../goals/providers/goal_provider.dart';
+import '../../goals/providers/goals_provider.dart';
 import '../../timeline/models/time_block.dart';
 import '../../timeline/providers/timeline_provider.dart';
 import '../models/task.dart';

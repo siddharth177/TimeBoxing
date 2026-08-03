@@ -9,7 +9,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../services/notification_service.dart';
 import '../../../shared/widgets/tb_button.dart';
-import '../../goals/providers/goal_provider.dart';
+import '../../goals/providers/goals_provider.dart';
 import '../../timeboxing/models/task.dart';
 import '../../timeboxing/providers/task_provider.dart';
 import '../../timeline/models/time_block.dart';
