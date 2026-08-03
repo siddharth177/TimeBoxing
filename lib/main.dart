@@ -39,7 +39,7 @@ void main() async {
 
   tz.initializeTimeZones();
   final localTz = await FlutterTimezone.getLocalTimezone();
-  tz_lib.setLocalLocation(tz_lib.getLocation(localTz));
+  tz_lib.setLocalLocation(tz_lib.getLocation(localTz.identifier));
 
   await NotificationService.init();
 
