@@ -8,8 +8,12 @@ import '../../goals/providers/goal_provider.dart';
 import '../../settings/providers/settings_provider.dart';
 import '../../timeline/models/time_block.dart';
 import '../../timeline/providers/timeline_provider.dart';
+import '../../timeline/widgets/add_block_sheet.dart';
 import '../models/task.dart';
 import '../providers/task_provider.dart';
+import '../widgets/backlog_section.dart';
+import '../widgets/carryover_section.dart';
+import '../widgets/schedule_section.dart';
 
 class TimeboxingScreen extends ConsumerWidget {
   const TimeboxingScreen({super.key});
