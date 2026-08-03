@@ -1,6 +1,9 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timeboxing/services/notification_service.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz_lib;
 import 'app.dart';
 import 'firebase_options.dart';
 import 'package:flutter/foundation.dart';
@@ -33,6 +36,10 @@ void main() async {
   } catch (e) {
     debugPrint('[TimeBox] Firebase not configured — running in demo mode. ($e)');
   }
+
+  tz.initializeTimeZones();
+  final localTz = await FlutterTimezone.getLocalTimezone();
+  tz_lib.setLocalLocation(tz_lib.getLocation(localTz));
 
   await NotificationService.init();
 

@@ -43,7 +43,7 @@ TimeBox connects three layers that most apps treat as completely separate produc
 ```
 Long-range goals  ──▶  Weekly priorities & chores  ──▶  Today's schedule
   (1–5 years)              (this week's tasks)             (exact hours)
-        ▲                                                        │
+        ▲                                                       │
         └──────────────  Daily review & AI insights  ◀──────────┘
 ```
 
