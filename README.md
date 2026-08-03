@@ -11,7 +11,9 @@
 A mindful, AI-powered timeboxing app — bridging the gap between long-term ambition and daily
 execution.
 
-Live @ https://siddharth177.github.io/TimeBoxing/
+<br />
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-4CAF50?style=for-the-badge&logo=google&logoColor=white)](https://siddharth177.github.io/TimeBoxing/)
 
 <br />
 
