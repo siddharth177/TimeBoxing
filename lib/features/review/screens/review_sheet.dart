@@ -17,7 +17,7 @@ import '../../timeline/providers/timeline_provider.dart';
 import '../models/daily_log.dart';
 import '../models/insight.dart';
 import '../providers/insight_provider.dart';
-import '../providers/review_sheet.dart';
+import '../providers/review_provider.dart';
 
 class ReviewSheet extends ConsumerStatefulWidget {
   const ReviewSheet({super.key, required this.date, this.asScreen = false});

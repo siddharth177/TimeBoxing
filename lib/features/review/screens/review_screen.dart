@@ -4,7 +4,7 @@ import 'package:timeboxing/features/review/screens/review_sheet.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../providers/review_sheet.dart';
+import '../providers/review_provider.dart';
 
 class ReviewScreen extends ConsumerWidget {
   const ReviewScreen({super.key});
