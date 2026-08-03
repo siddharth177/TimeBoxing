@@ -229,7 +229,28 @@ class SettingsScreen extends ConsumerWidget {
                   .update(settings.copyWith(notificationsEnabled: v)),
             ),
             const SizedBox(height: 32),
-
+            _SectionLabel(
+              'Calendar Sync',
+              scheme,
+              tooltip:
+                  'Automatically adds your time blocks to your device calendar when enabled.',
+            ),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                'Sync blocks to calendar',
+                style: AppTextStyles.textMd(),
+              ),
+              subtitle: Text(
+                'New blocks are added to your default calendar',
+                style: AppTextStyles.textSm(color: scheme.onSurfaceVariant),
+              ),
+              value: settings.calendarSyncEnabled,
+              onChanged: (v) => ref
+                  .read(appSettingsProvider.notifier)
+                  .update(settings.copyWith(calendarSyncEnabled: v)),
+            ),
+            const SizedBox(height: 32),
             _SectionLabel(
               'Content',
               scheme,
