@@ -12,6 +12,9 @@ import '../../../main.dart';
 import '../../settings/providers/settings_provider.dart';
 import '../models/time_block.dart';
 import '../providers/timeline_provider.dart';
+import '../widgets/add_block_sheet.dart';
+import '../widgets/current_task_card.dart';
+import '../widgets/time_slot_tile.dart';
 
 bool _sameDay(DateTime a, DateTime b) =>
     a.year == b.year && a.month == b.month && a.day == b.day;
