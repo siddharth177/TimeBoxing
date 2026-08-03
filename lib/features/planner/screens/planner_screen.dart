@@ -10,7 +10,7 @@ import '../../timeline/widgets/add_block_sheet.dart';
 
 final _selectedDayProvider = NotifierProvider<_SelectedDayNotifier, DateTime>(
   _SelectedDayNotifier.new,
-); // name cut off in photo
+);
 
 class _SelectedDayNotifier extends Notifier<DateTime> {
   @override
@@ -54,7 +54,7 @@ class PlannerScreen extends ConsumerWidget {
                     children: [
                       Text('Planner', style: AppTextStyles.heading2xl()),
                       Text(
-                        '$completedCount / ${dayBlocks.length} done Â· ${_fmtDuration(totalMin)}',
+                        '$completedCount / ${dayBlocks.length} done · ${_fmtDuration(totalMin)}',
                         style: AppTextStyles.textMd(
                           color: scheme.onSurfaceVariant,
                         ),
@@ -212,7 +212,7 @@ class _FreeSlot extends StatelessWidget {
           Expanded(child: DashedDivider(color: scheme.outlineVariant)),
           const SizedBox(width: 12),
           Text(
-            'Free Â· ${_fmtDuration(minutes)}',
+            'Free · ${_fmtDuration(minutes)}',
             style: AppTextStyles.textXs(color: scheme.onSurfaceVariant),
           ),
         ],
@@ -256,7 +256,7 @@ class _BlockTile extends StatelessWidget {
               ),
         ),
         subtitle: Text(
-          '${_fmtTime(block.startTime)} - ${_fmtTime(block.endTime)} Â· ${_fmtDuration(dur)}',
+          '${_fmtTime(block.startTime)} – ${_fmtTime(block.endTime)}  ·  ${_fmtDuration(dur)}',
           style: AppTextStyles.textXs(color: scheme.onSurfaceVariant),
         ),
         leading: _TypeIcon(type: block.type, color: color),
