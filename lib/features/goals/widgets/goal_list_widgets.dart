@@ -106,9 +106,9 @@ class _GoalPageState extends ConsumerState<GoalPage> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final allGoals = ref.watch(tierGoalsProvider(widget.tier));
+    final allGoals = ref.watch(tierGoalsProvider(widget.tier)).value ?? [];
     final goals =
-        allGoals.where((g) => !_pendingDelete.contains(g.id)).value ?? [];
+        allGoals.where((g) => !_pendingDelete.contains(g.id)).toList();
     final uid = ref.read(currentUserProvider)?.uid;
 
     void doToggle(Goal g) {
