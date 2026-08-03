@@ -63,6 +63,7 @@ class AppSettings {
     this.prioritiesPerSlot = false,
     this.choreColors = const [],
     this.choresPerSlot = false,
+    this.calendarSyncEnabled = false,
   });
 
   final int maxPriorities;
@@ -84,6 +85,7 @@ class AppSettings {
 
   /// When false, choreColors[0] applies to all slots.
   final bool choresPerSlot;
+  final bool calendarSyncEnabled;
 
   Color colorForPriority(int slotIndex) {
     if (priorityColors.isEmpty) return const Color(0xFF926247);
@@ -132,6 +134,7 @@ class AppSettings {
         (d['choreColors'] as List?)?.map((e) => (e as num).toInt()).toList() ??
         [],
     choresPerSlot: d['choresPerSlot'] as bool? ?? false,
+    calendarSyncEnabled: d['calendarSyncEnabled'] as bool? ?? false,
   );
 
   AppSettings copyWith({
@@ -146,6 +149,7 @@ class AppSettings {
     bool? prioritiesPerSlot,
     List<int>? choreColors,
     bool? choresPerSlot,
+    bool? calendarSyncEnabled,
   }) => AppSettings(
     maxPriorities: maxPriorities ?? this.maxPriorities,
     maxChores: maxChores ?? this.maxChores,
@@ -158,6 +162,7 @@ class AppSettings {
     prioritiesPerSlot: prioritiesPerSlot ?? this.prioritiesPerSlot,
     choreColors: choreColors ?? this.choreColors,
     choresPerSlot: choresPerSlot ?? this.choresPerSlot,
+    calendarSyncEnabled: calendarSyncEnabled ?? this.calendarSyncEnabled,
   );
 }
 
