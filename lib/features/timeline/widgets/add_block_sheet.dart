@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timeboxing/services/calendar_service.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -146,17 +147,22 @@ class _AddBlockSheetState extends ConsumerState<AddBlockSheet> {
         color: _color,
         notes: notes.isEmpty ? null : notes,
       );
-      await ref.read(timeBlocksRepoProvider)?.add(block);
-      final notificationsEnabled = ref
-          .read(appSettingsProvider)
-          .notificationsEnabled;
-      if (notificationsEnabled) {
+      final repo = ref.read(timeBlocksRepoProvider);
+      await repo?.add(block);
+      final appSettings = ref.read(appSettingsProvider);
+      if (appSettings.notificationsEnabled) {
         await NotificationService.scheduleBlockReminder(
           blockId: block.id,
           title: block.title,
           startTime: block.startTime,
           minutesBefore: 5,
         );
+      }
+      if (appSettings.calendarSyncEnabled) {
+        final calResult = await CalendarService.instance.addBlock(block);
+        if (calResult != null) {
+          await repo?.update(block.copyWith(calendarId: calResult.calendarId));
+        }
       }
       if (mounted) Navigator.of(context).pop();
     } catch (e) {
