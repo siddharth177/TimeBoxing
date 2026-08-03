@@ -65,7 +65,7 @@ class _AppShellState extends ConsumerState<AppShell> {
     final tab = ref.watch(shellTabProvider);
     final isWide = MediaQuery.of(context).size.width >= 600;
 
-    ref.listen<int>(shellTabProvider, (prev, next) {
+    ref.listen<int>(currentStreakProvider, (prev, next) {
       if (prev != next) NotificationService.scheduleStreakWarning(streak: next);
     });
 

@@ -370,7 +370,7 @@ class _EditableItemState extends State<_EditableItem> {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: _editing
-                ? scheme.outline.withValues(alpha: 0.5)
+                ? widget.color.withValues(alpha: 0.5)
                 : scheme.outline.withValues(alpha: 0.25),
           ),
         ),

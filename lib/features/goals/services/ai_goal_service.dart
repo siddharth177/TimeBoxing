@@ -103,7 +103,7 @@ Break down this long-term goal into an actionable plan.
 Goal: "$title"$desc
 Category: $category
 
-Return ONLY valid JSON in exactly this structure (2 medium-term goals, each with 2-3 short-term
+Return ONLY valid JSON in exactly this structure (2 medium-term goals, each with 2-3 short-term milestones, each milestone with 2-3 priority tasks):
 {
   "medium_goals": [
     {
