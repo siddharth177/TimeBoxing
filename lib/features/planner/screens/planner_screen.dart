@@ -6,6 +6,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../timeline/models/time_block.dart';
 import '../../timeline/providers/timeline_provider.dart';
+import '../../timeline/widgets/add_block_sheet.dart';
 
 final _selectedDayProvider = NotifierProvider<_SelectedDayNotifier, DateTime>(
   _SelectedDayNotifier.new,
