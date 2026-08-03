@@ -6,6 +6,8 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../main.dart';
 import '../../../services/notification_service.dart';
 import '../providers/onboarding_provider.dart';
+import '../widgets/illustrations/ai_goal_illustration.dart';
+import '../widgets/illustrations/backlog_illustration.dart';
 
 class _PageData {
   final String tag;
