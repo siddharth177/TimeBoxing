@@ -12,6 +12,7 @@ import '../widgets/illustrations/day_ring_illustration.dart';
 import '../widgets/illustrations/focus_card_illustration.dart';
 import '../widgets/illustrations/goals_illustration.dart';
 import '../widgets/illustrations/review_illustration.dart';
+import '../widgets/illustrations/time_grid_illustration.dart';
 
 class _PageData {
   final String tag;
