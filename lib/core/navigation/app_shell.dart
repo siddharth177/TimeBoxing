@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../features/focus/screens/focus_screen.dart';
 import '../../features/goals/screens/goals_screen.dart';
+import '../../features/timeboxing/screens/timeboxing_screen.dart';
 import '../../services/notification_service.dart';
 
 /// Global provider for the selected shell tab index.
