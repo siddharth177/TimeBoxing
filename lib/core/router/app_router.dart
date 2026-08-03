@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/auth/screens/auth_screen.dart';
 import '../../features/auth/screens/email_verification_screen.dart';
+import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../main.dart';
 import '../navigation/app_shell.dart';
 
