@@ -43,7 +43,7 @@ class TimeBlocksRepository {
   Future<void> update(TimeBlock block) =>
       _col.doc(block.id).update(block.toMap());
 
-  Future<void> delete(TimeBlock block) => _col.doc(block.id).delete();
+  Future<void> delete(String id) => _col.doc(id).delete();
 
   Future<void> toggleComplete(String id, bool current) =>
       _col.doc(id).update({'isCompleted': !current});
