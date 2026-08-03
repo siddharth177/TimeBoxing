@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-abstract final class TdBreakpoints {
+abstract final class TbBreakpoints {
   static const double tablet = 720;
   static const double desktop = 1200;
   static const double sidebarWidth = 380.0;
