@@ -1,9 +1,12 @@
 import 'dart:math' show min, max;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timeboxing/features/settings/providers/settings_provider.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../services/calendar_service.dart';
 import '../../../shared/widgets/tb_button.dart';
 import '../../timeline/models/time_block.dart';
 import '../../timeline/providers/timeline_provider.dart';
@@ -603,7 +606,7 @@ class _ScheduleSlotDialogState extends State<ScheduleSlotDialog> {
   }
 }
 
-class BlockEditSheet extends StatefulWidget {
+class BlockEditSheet extends ConsumerStatefulWidget {
   const BlockEditSheet({
     super.key,
     required this.block,
@@ -618,10 +621,10 @@ class BlockEditSheet extends StatefulWidget {
   final TimeBlocksRepository? blocksRepo;
 
   @override
-  State<BlockEditSheet> createState() => _BlockEditSheetState();
+  ConsumerState<BlockEditSheet> createState() => _BlockEditSheetState();
 }
 
-class _BlockEditSheetState extends State<BlockEditSheet> {
+class _BlockEditSheetState extends ConsumerState<BlockEditSheet> {
   late TimeOfDay _start;
   late TimeOfDay _end;
   bool _saving = false;
@@ -686,6 +689,15 @@ class _BlockEditSheetState extends State<BlockEditSheet> {
   Future<void> _delete() async {
     setState(() => _saving = true);
     try {
+      final settings = ref.read(appSettingsProvider);
+      if (settings.calendarSyncEnabled &&
+          widget.block.calendarEventId != null &&
+          widget.block.calendarId != null) {
+        await CalendarService.instance.deleteBlock(
+          widget.block.calendarId!,
+          widget.block.calendarEventId!,
+        );
+      }
       await widget.blocksRepo?.delete(widget.block.id);
       if (mounted) Navigator.of(context).pop();
     } catch (_) {
