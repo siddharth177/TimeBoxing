@@ -15,6 +15,8 @@ class TimeBlock {
     this.color,
     this.notes,
     this.taskId,
+    this.calendarEventId,
+    this.calendarId,
   });
 
   final String id;
@@ -26,6 +28,8 @@ class TimeBlock {
   final Color? color;
   final String? notes;
   final String? taskId;
+  final String? calendarEventId;
+  final String? calendarId;
 
   Duration get duration => endTime.difference(startTime);
 
@@ -43,6 +47,8 @@ class TimeBlock {
     'colorValue': color?.toARGB32(),
     'notes': notes,
     'taskId': taskId,
+    'calendarEventId': calendarEventId,
+    'calendarId': calendarId,
   };
 
   factory TimeBlock.fromDoc(DocumentSnapshot<Map<String, dynamic>> doc) {
@@ -57,6 +63,8 @@ class TimeBlock {
       color: d['colorValue'] != null ? Color(d['colorValue'] as int) : null,
       notes: d['notes'] as String?,
       taskId: d['taskId'] as String?,
+      calendarEventId: d['calendarEventId'] as String?,
+      calendarId: d['calendarId'] as String?,
     );
   }
 
@@ -69,6 +77,8 @@ class TimeBlock {
     Color? color,
     String? notes,
     String? taskId,
+    String? calendarEventId,
+    String? calendarId,
   }) => TimeBlock(
     id: id,
     title: title ?? this.title,
@@ -79,5 +89,7 @@ class TimeBlock {
     color: color ?? this.color,
     notes: notes ?? this.notes,
     taskId: taskId ?? this.taskId,
+    calendarEventId: calendarEventId ?? this.calendarEventId,
+    calendarId: calendarId ?? this.calendarId,
   );
 }
