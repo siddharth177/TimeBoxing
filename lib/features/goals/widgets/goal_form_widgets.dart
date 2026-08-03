@@ -1,5 +1,17 @@
 // goal_form_widgets.dart
 
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_text_styles.dart';
+import '../providers/goal_provider.dart';
+import '../screens/ai_goal_plan_sheet.dart';
+import '../services/ai_goal_service.dart';
+
 String tierPriorityLabel(GoalTier tier, int p) => switch (tier) {
   GoalTier.long => 'L$p',
   GoalTier.medium => 'M$p',
