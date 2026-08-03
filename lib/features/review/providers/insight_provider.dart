@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers/firebase_providers.dart';
 import '../models/insight.dart';
+import '../services/reflection_analysis_service.dart';
 
 final insightsProvider = StreamProvider<List<Insight>>((ref) {
   final user = ref.watch(currentUserProvider);
