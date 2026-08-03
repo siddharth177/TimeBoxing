@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timeboxing/features/timeboxing/widgets/schedule_section.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
