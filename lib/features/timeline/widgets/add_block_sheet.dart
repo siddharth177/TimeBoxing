@@ -161,7 +161,7 @@ class _AddBlockSheetState extends ConsumerState<AddBlockSheet> {
       if (appSettings.calendarSyncEnabled) {
         final calResult = await CalendarService.instance.addBlock(block);
         if (calResult != null) {
-          await repo?.update(block.copyWith(calendarId: calResult.calendarId));
+          await repo?.update(block.copyWith(calendarId: calResult.calendarId, calendarEventId: calResult.eventId));
         }
       }
       if (mounted) Navigator.of(context).pop();

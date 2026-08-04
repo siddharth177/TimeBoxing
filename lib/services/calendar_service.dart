@@ -22,10 +22,17 @@ class CalendarService {
 
   Future<String?> _writableCalendarId() async {
     final cals = await _plugin.retrieveCalendars();
-    for (final c in cals.data ?? []) {
-      if (c.isReadonly == false) return c.id;
-    }
-    return null;
+    final writable = (cals.data ?? [])
+        .where((c) => c.isReadonly == false)
+        .toList();
+    if (writable.isEmpty) return null;
+
+    // Prefer Google account calendar - it syncs to Google Calendar app.
+    final google = writable.firstWhere(
+      (c) => c.accountType?.toLowerCase().contains('google') == true,
+      orElse: () => writable.first,
+    );
+    return google.id;
   }
 
   Future<({String calendarId, String eventId})?> addBlock(
