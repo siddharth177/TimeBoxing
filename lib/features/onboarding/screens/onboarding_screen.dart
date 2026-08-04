@@ -249,37 +249,39 @@ class _OnboardingPage extends StatelessWidget {
           ),
           Expanded(
             flex: 45,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: data.accent.withValues(alpha: 0.14),
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color: data.accent.withValues(alpha: 0.40),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: data.accent.withValues(alpha: 0.14),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: data.accent.withValues(alpha: 0.40),
+                      ),
+                    ),
+                    child: Text(
+                      data.tag,
+                      style: AppTextStyles.labelSm(color: data.accent),
                     ),
                   ),
-                  child: Text(
-                    data.tag,
-                    style: AppTextStyles.labelSm(color: data.accent),
+                  const SizedBox(height: 16),
+                  Text(
+                    data.title,
+                    style: AppTextStyles.displaySm(color: AppColors.white),
                   ),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  data.title,
-                  style: AppTextStyles.displaySm(color: AppColors.white),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  data.subtitle,
-                  style: AppTextStyles.textLg(color: AppColors.brown40),
-                ),
-              ],
+                  const SizedBox(height: 12),
+                  Text(
+                    data.subtitle,
+                    style: AppTextStyles.textLg(color: AppColors.brown40),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

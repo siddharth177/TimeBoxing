@@ -181,7 +181,7 @@ class _AddBlockSheetState extends ConsumerState<AddBlockSheet> {
     final fmt = MaterialLocalizations.of(context);
     final showDesc = ref.watch(appSettingsProvider).showDescriptions;
 
-    return Padding(
+    return SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(
         20,
         20,

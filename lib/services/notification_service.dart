@@ -22,9 +22,6 @@ class NotificationService {
 
   static Future<void> init() async {
     if (kIsWeb) return;
-    tz_data.initializeTimeZones();
-    final tzInfo = await FlutterTimezone.getLocalTimezone();
-    tz.setLocalLocation(tz.getLocation(tzInfo.identifier));
 
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const ios = DarwinInitializationSettings(
