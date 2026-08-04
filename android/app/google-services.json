@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "452010596474-13m38nje1opcr3kotedjmcbmbmnpbcc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.timeboxing",
+            "certificate_hash": "61ff5418ac8ef4b149251d7366eb48099bf68e69"
+          }
+        },
+        {
           "client_id": "452010596474-hm6ua1f3gni4uf8j6oihljvlc6sttda6.apps.googleusercontent.com",
           "client_type": 3
         }
