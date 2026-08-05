@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '452010596474',
     projectId: 'timebox-bc28a',
     storageBucket: 'timebox-bc28a.firebasestorage.app',
+    androidClientId: '452010596474-13m38nje1opcr3kotedjmcbmbmnpbcc6.apps.googleusercontent.com',
     iosClientId: '452010596474-lhf8t271an465pm9a3sqk5is30ucuu8m.apps.googleusercontent.com',
     iosBundleId: 'com.example.timeboxing',
   );
@@ -72,6 +73,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '452010596474',
     projectId: 'timebox-bc28a',
     storageBucket: 'timebox-bc28a.firebasestorage.app',
+    androidClientId: '452010596474-13m38nje1opcr3kotedjmcbmbmnpbcc6.apps.googleusercontent.com',
     iosClientId: '452010596474-lhf8t271an465pm9a3sqk5is30ucuu8m.apps.googleusercontent.com',
     iosBundleId: 'com.example.timeboxing',
   );
