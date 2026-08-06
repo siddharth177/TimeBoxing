@@ -29,7 +29,7 @@ void main() async {
         providerAndroid: const AndroidPlayIntegrityProvider(),
         providerApple: const AppleAppAttestWithDeviceCheckFallbackProvider(),
         // TODO: replace 'recaptcha_secret_key' with your reCAPTCHA v3 site key from Google Cloud Console
-        providerWeb: ReCaptchaV3Provider('recaptcha_secret_key'),
+        providerWeb: ReCaptchaV3Provider('reCAPTCHA'),
       );
     }
     firebaseReady = true;
