@@ -24,17 +24,18 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    if (!kDebugMode) {
-      await FirebaseAppCheck.instance.activate(
-        providerAndroid: const AndroidPlayIntegrityProvider(),
-        providerApple: const AppleAppAttestWithDeviceCheckFallbackProvider(),
-        // TODO: replace 'recaptcha_secret_key' with your reCAPTCHA v3 site key from Google Cloud Console
-        providerWeb: ReCaptchaV3Provider('reCAPTCHA'),
-      );
-    }
+    await FirebaseAppCheck.instance.activate(
+      providerAndroid: const AndroidPlayIntegrityProvider(),
+      providerApple: const AppleAppAttestWithDeviceCheckFallbackProvider(),
+      // TODO: replace 'recaptcha_secret_key' with your reCAPTCHA v3 site key from Google Cloud Console
+      providerWeb: ReCaptchaV3Provider('reCAPTCHA'),
+    );
+
     firebaseReady = true;
   } catch (e) {
-    debugPrint('[TimeBox] Firebase not configured — running in demo mode. ($e)');
+    debugPrint(
+      '[TimeBox] Firebase not configured — running in demo mode. ($e)',
+    );
   }
 
   tz.initializeTimeZones();
