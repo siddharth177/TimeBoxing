@@ -220,7 +220,7 @@ class GoalsRepository {
       .doc(_uid)
       .collection(_collection);
 
-  Future<void> add({
+  Future<String> add({
     required String title,
     required GoalCategory category,
     String? customTag,
@@ -228,7 +228,7 @@ class GoalsRepository {
     int? priority,
     String? parentId,
     GoalItemType itemType = GoalItemType.goal,
-  }) {
+  }) async {
     final id = _uuid.v4();
     final goal = Goal(
       id: id,
@@ -240,7 +240,8 @@ class GoalsRepository {
       parentId: parentId,
       itemType: itemType,
     );
-    return _col.doc(id).set(goal.toMap());
+    await _col.doc(id).set(goal.toMap());
+    return id;
   }
 
   Future<void> update(Goal goal) =>
