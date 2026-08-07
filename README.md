@@ -1,6 +1,4 @@
-<div align="center">
-
-<img src="screenshots/hero_banner.png" alt="TimeBox — Timebox your day, own your time" width="100%" />
+<img src="https://github.com/user-attachments/assets/41d553e9-459f-4369-a27f-502de415235f" alt="TimeBox — Timebox your day, own your time" width="100%" />
 
 <br />
 
