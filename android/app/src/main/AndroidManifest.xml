@@ -4,6 +4,12 @@
 
     <!-- Required to create, edit, or delete calendar events -->
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!-- Required for exact alarm scheduling on Android 12+ (API 31+) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
+    <!-- Required for POST_NOTIFICATIONS on Android 13+ (API 33+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
         android:label="timeboxing"
         android:name="${applicationName}"

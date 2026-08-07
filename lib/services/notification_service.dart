@@ -66,6 +66,11 @@ class NotificationService {
         ? '"$title" starts now'
         : '"$title" starts in ${minutesBefore}m';
 
+    final androidImpl = _plugin
+    .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    final canExact = await androidImpl?.canScheduleExactNotifications() ?? true;
+    final scheduleMode = canExact ? AndroidScheduleMode.exactAllowWhileIdle : AndroidScheduleMode.inexact;
+
     await _plugin.zonedSchedule(
       id: id,
       title: '⏱ TimeBox',
@@ -81,7 +86,7 @@ class NotificationService {
         ),
         iOS: DarwinNotificationDetails(),
       ),
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: scheduleMode,
     );
   }
 
