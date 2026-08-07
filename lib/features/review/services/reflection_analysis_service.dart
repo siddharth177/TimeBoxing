@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/foundation.dart';
+import 'package:timeboxing/services/groq_service.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../services/notification_service.dart';
@@ -145,9 +146,24 @@ Return ONLY valid JSON:
 }
 ''';
 
+    String? text;
     try {
       final response = await _model.generateContent([Content.text(prompt)]);
-      final text = response.text;
+      text = response.text;
+    } catch (e) {
+      debugPrint(
+        '[ReflectionAnalysis] Firebase AI failed, falling back to Groq: $e',
+      );
+    }
+
+    if (text == null || text.trim().isEmpty) {
+      text = await GroqService.instance.complete(
+        prompt: prompt,
+        model: GroqService.modelPro,
+      );
+    }
+
+    try {
       if (text == null || text.trim().isEmpty) return;
 
       final parsed = jsonDecode(text.trim()) as Map<String, dynamic>;
