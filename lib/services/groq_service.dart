@@ -9,7 +9,7 @@ class GroqService {
 
   static final GroqService instance = GroqService._();
 
-  static const _endpoint = 'https://api.groq.com/openapi/v1/chat/completions';
+  static const _endpoint = 'https://api.groq.com/openai/v1/chat/completions';
 
   /// Best model  use for goal decomposition & reelection analysis (complex reasoning)
   static const modelPro = 'llama-3.3-70b-versatile';
@@ -74,7 +74,7 @@ class GroqService {
         return (data['choices'] as List<dynamic>).first['message']['content']
             as String?;
       }
-      debugPrint('Groq API returned status code ${response.statusCode}');
+      debugPrint('Groq API returned status code ${response.statusCode}, response: ${response.body}');
       return null;
     } catch (e) {
       debugPrint('Error completing with Groq: $e');
