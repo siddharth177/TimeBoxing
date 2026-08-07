@@ -115,6 +115,7 @@ class AppSettings {
     'prioritiesPerSlot': prioritiesPerSlot,
     'choreColors': choreColors,
     'choresPerSlot': choresPerSlot,
+    'calendarSyncEnabled': calendarSyncEnabled,
   };
 
   factory AppSettings.fromMap(Map<String, dynamic> d) => AppSettings(

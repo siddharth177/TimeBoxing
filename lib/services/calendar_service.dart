@@ -22,7 +22,7 @@ class CalendarService {
 
   Future<String?> _writableCalendarId() async {
     final cals = await _plugin.retrieveCalendars();
-    final writable = (cals.data ?? [])
+    final writable = (cals.data ?? <Calendar>[])
         .where((c) => c.isReadOnly == false)
         .toList();
     if (writable.isEmpty) return null;
