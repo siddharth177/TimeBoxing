@@ -919,6 +919,10 @@ class GoalSheets {
     );
   }
 
+  static int _maxPriority(List<Goal> goals) => goals.isEmpty
+      ? 0
+      : goals.map((g) => g.priority ?? 0).reduce((a, b) => a > b ? a : b);
+
   static Future<void> _confirmAiPlan({
     required WidgetRef ref,
     required AiGoalPlan plan,
@@ -931,6 +935,12 @@ class GoalSheets {
     final shortRepo = ref.read(tierGoalsRepoProvider(GoalTier.short));
 
     if (tier == GoalTier.long) {
+      final medOffset = _maxPriority(
+        ref.read(tierGoalsProvider(GoalTier.medium)).value ?? [],
+      );
+      var shortOffset = _maxPriority(
+        ref.read(tierGoalsProvider(GoalTier.short)).value ?? [],
+      );
       for (var mi = 0; mi < plan.mediumGoals.length; mi++) {
         final mg = plan.mediumGoals[mi];
         if (mg.title.isEmpty) continue;
@@ -939,18 +949,18 @@ class GoalSheets {
           category: category,
           customTag: customTag,
           parentId: parentId,
-          priority: mi + 1,
+          priority: medOffset + mi + 1,
           itemType: GoalItemType.milestone,
         );
-        for (var si = 0; si < mg.shortGoals.length; si++) {
-          final sg = mg.shortGoals[si];
+        for (final sg in mg.shortGoals) {
           if (sg.title.isEmpty) continue;
+          shortOffset++;
           await shortRepo?.add(
             title: sg.title,
             category: category,
             customTag: customTag,
             parentId: medId,
-            priority: si + 1,
+            priority: shortOffset,
             itemType: sg.type,
             description: sg.tasks.isNotEmpty
                 ? '• ${sg.tasks.join('\n• ')}'
@@ -962,15 +972,18 @@ class GoalSheets {
     }
 
     if (tier == GoalTier.medium) {
-      for (var si = 0; si < plan.shortGoals.length; si++) {
-        final sg = plan.shortGoals[si];
+      var shortOffset = _maxPriority(
+        ref.read(tierGoalsProvider(GoalTier.short)).value ?? [],
+      );
+      for (final sg in plan.shortGoals) {
         if (sg.title.isEmpty) continue;
+        shortOffset++;
         await shortRepo?.add(
           title: sg.title,
           category: category,
           customTag: customTag,
           parentId: parentId,
-          priority: si + 1,
+          priority: shortOffset,
           itemType: sg.type,
           description: sg.tasks.isNotEmpty
               ? '• ${sg.tasks.join('\n• ')}'
@@ -981,15 +994,17 @@ class GoalSheets {
     }
 
     if (tier == GoalTier.short) {
-      for (var ti = 0; ti < plan.tasks.length; ti++) {
-        final task = plan.tasks[ti];
+      var shortOffset = _maxPriority(
+        ref.read(tierGoalsProvider(GoalTier.short)).value ?? [],
+      );
+      for (final task in plan.tasks) {
         if (task.isEmpty) continue;
         await shortRepo?.add(
           title: task,
           category: category,
           customTag: customTag,
           parentId: parentId,
-          priority: ti + 1,
+          priority: shortOffset,
           itemType: GoalItemType.checkpoint,
         );
       }
