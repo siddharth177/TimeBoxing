@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../services/groq_service.dart';
 import '../providers/goals_provider.dart';
 
 class AiShortGoal {
@@ -71,13 +72,29 @@ class AiGoalService {
       try {
         final response = await _model.generateContent([Content.text(prompt)]);
         final text = response.text;
-        if (text == null || text.isEmpty) return null;
-        return _parse(text, tier);
+        if (text != null && text.isNotEmpty) {
+          return _parse(text, tier);
+        }
       } catch (e) {
         debugPrint('[AiGoalService] Attempt ${attempt + 1} failed: $e');
-        if (attempt == 1) return null;
-        await Future<void>.delayed(const Duration(seconds: 1));
+        if (attempt == 0) {
+          await Future<void>.delayed(const Duration(seconds: 1));
+        }
       }
+    }
+
+    // Fallback to Groq (llama-3.3-70b-versatile)
+    debugPrint('[AiGoalService] Falling back to Groq...');
+    try {
+      final text = await GroqService.instance.complete(
+        prompt: prompt,
+        model: GroqService.modelPro,
+      );
+      if (text != null && text.isNotEmpty) {
+       return _parse(text, tier);
+      }
+    }  catch (e) {
+      debugPrint('[AiGoalService] Groq fallback failed: $e');
     }
     return null;
   }
