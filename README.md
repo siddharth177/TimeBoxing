@@ -1,4 +1,4 @@
-<img width="100%" height="500" alt="app_icon" src="https://github.com/user-attachments/assets/55626764-71e6-48ff-a2a3-d40ecff86caf" alt="TimeBox — Timebox your day, own your time" />
+<img width="100%" height="100%" alt="app_icon" src="https://github.com/user-attachments/assets/55626764-71e6-48ff-a2a3-d40ecff86caf" alt="TimeBox — Timebox your day, own your time" />
 
 
 <br />
