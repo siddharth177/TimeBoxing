@@ -92,8 +92,9 @@ class CurrentTaskCard extends ConsumerWidget {
 
   String _formatRemaining(Duration d) {
     if (d.isNegative) return 'Done';
-    if (d.inHours >= 1)
+    if (d.inHours >= 1) {
       return '${d.inHours}h ${d.inMinutes.remainder(60)}m left';
+    }
     return '${d.inMinutes}m left';
   }
 }

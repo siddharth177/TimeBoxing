@@ -90,8 +90,9 @@ class AppSettings {
   Color colorForPriority(int slotIndex) {
     if (priorityColors.isEmpty) return const Color(0xFF926247);
     if (!prioritiesPerSlot) return Color(priorityColors[0]);
-    if (slotIndex < priorityColors.length)
+    if (slotIndex < priorityColors.length) {
       return Color(priorityColors[slotIndex]);
+    }
     return const Color(0xFF926247);
   }
 
