@@ -1,5 +1,8 @@
 <img src="https://github.com/user-attachments/assets/41d553e9-459f-4369-a27f-502de415235f" alt="TimeBox — Timebox your day, own your time" width="100%" />
 
+<img width="1254" height="1254" alt="app_icon" src="https://github.com/user-attachments/assets/55626764-71e6-48ff-a2a3-d40ecff86caf" alt="TimeBox — Timebox your day, own your time" />
+
+
 <br />
 
 # TimeBox
