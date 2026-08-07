@@ -999,6 +999,7 @@ class GoalSheets {
       );
       for (final task in plan.tasks) {
         if (task.isEmpty) continue;
+        shortOffset++;
         await shortRepo?.add(
           title: task,
           category: category,
