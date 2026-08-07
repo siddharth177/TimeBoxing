@@ -234,6 +234,14 @@ Timezone-aware local notifications remind you when a time block is starting, and
 streak-preservation nudge if the daily review hasn't been completed. Fire reliably even when the app
 is backgrounded or closed.
 
+### 📅 Calendar Sync
+
+Time blocks are written directly to the device's native calendar - Google Calendar on Android,
+Apple Calendar / iCloud on iOS, or any Exchange-synced calendar the device has access to. No
+third-party OAuth required: the app writes through the platform's calendar API, and the device
+handles
+cloud sync to whichever provider the user has configured.
+
 ---
 
 ## Technical Architecture
@@ -264,7 +272,9 @@ requests from non-genuine clients.
 **Firebase AI Logic — Gemini 2.0 Flash** — Goal decomposition and review analysis run through
 Firebase's AI proxy, authenticated with Firebase credentials. No separate API key management, no
 custom backend, no cold-start penalty. The model is invoked only on explicit user action — no
-background AI processing.
+background AI processing. **Groq (Llama 3.3 70B)** acts as a hot-standby fallback: if the Firebase
+AI call fails, the request is retried against the Groq API transparently, keeping AI features
+available during Firebase outages.
 
 **go_router** — Declarative URL-based routing with authentication guards. Clean deep-link support
 without imperative `Navigator` calls scattered through the tree.
@@ -284,6 +294,8 @@ platform's native alarm infrastructure.
 | **Auth**          | Firebase Auth + App Check                 |
 | **AI**            | Firebase AI Logic (Gemini 2.0 Flash)      |
 | **Notifications** | flutter_local_notifications v22           |
+| **Calendar**      | device_calendar (Android + iOS native)    |
+| **AI Fallback**   | Groq - Llama 3.3 70b Versatile            |
 
 ---
 
