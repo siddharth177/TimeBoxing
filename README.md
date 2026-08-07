@@ -20,6 +20,7 @@ execution.
 ![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=flat-square&logo=flutter&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-Firestore%20%2B%20Auth-FFCA28?style=flat-square&logo=firebase&logoColor=black)
 ![Gemini](https://img.shields.io/badge/AI-Gemini%202.0%20Flash-4285F4?style=flat-square&logo=google&logoColor=white)
+![Groq](https://img.sheilds.io/badge/AI%20Fallback-Groq%20Llama%203.3-F55036?style=flat-square&logo=groq&logoColor=white)
 ![Riverpod](https://img.shields.io/badge/State-Riverpod%203-00BCD4?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android-lightgrey?style=flat-square)
 
