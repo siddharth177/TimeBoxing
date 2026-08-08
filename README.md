@@ -108,6 +108,8 @@ not a corporate one. Calm focus beats anxious efficiency.
 <table>
 <tr>
 <td width="58%" valign="top">
+<img width="817" height="585" alt="image" src="https://github.com/user-attachments/assets/10ff23a3-63dd-4775-8e09-17be2788b8fa" />
+
 
 ### 🗓️ Daily Timeboxing
 
@@ -130,7 +132,8 @@ not a limitation, it's honest prioritisation.*
 <table>
 <tr>
 <td width="42%" align="center" valign="top">
-<img src="screenshots/screen_goals.png" width="210" alt="Goals" />
+![Uploading image.png…]()
+
 </td>
 <td width="58%" valign="top">
 
